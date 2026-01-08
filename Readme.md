@@ -112,6 +112,7 @@ sysctl net.ipv4.ip_forward
 ```
 # install docker on all the 6 machines , not on bastian host
 ```bash
+sudo su
 sudo apt update
 sudo apt install -y ca-certificates curl gnupg lsb-release
 #adding GPG key
