@@ -129,3 +129,76 @@ sudo usermod -aG docker ubuntu
 docker version
 docker ps
 ```
+
+
+# NGINX TCP Load Balancer for Kubernetes API (HA)
+
+Target Node --> lb-01
+Role: External Load Balancer
+
+```bash
+sudo apt update
+sudo apt install -y nginx
+nginx -v
+systemctl status nginx
+
+# Install NGINX Stream Module
+sudo apt install -y libnginx-mod-stream
+ls /usr/lib/nginx/modules | grep stream
+# — Verify Stream Module Is Enabled
+ls -l /etc/nginx/modules-enabled/ | grep stream
+```
+# — Create Stream Configuration Directory
+```bash
+sudo mkdir -p /etc/nginx/stream.d
+```
+add the following lines
+```bash
+upstream k8s_api {
+    least_conn;
+    server 10.0.0.47:6443;   # cp-01
+    server 10.0.0.251:6443;  # cp-02
+    server 10.0.0.109:6443;  # cp-03
+}
+
+server {
+    listen 6443;
+    proxy_pass k8s_api;
+    proxy_timeout 10m;
+    proxy_connect_timeout 5s;
+}
+```
+# Register Stream Context in nginx.conf
+file --> sudo nano /etc/nginx/nginx.conf
+Locate this line -- include /etc/nginx/modules-enabled/*.conf;
+Immediately after it, add:
+```bash
+stream {
+    include /etc/nginx/stream.d/*.conf;
+}
+```
+verify -->
+sudo nginx -t
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
