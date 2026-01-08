@@ -148,12 +148,12 @@ ls /usr/lib/nginx/modules | grep stream
 # — Verify Stream Module Is Enabled
 ls -l /etc/nginx/modules-enabled/ | grep stream
 ```
-# — Create Stream Configuration Directory
+# — Create Stream Configuration Directory and conf file
 ```bash
 sudo mkdir -p /etc/nginx/stream.d
-```
-sudo nano /etc/nginx/stream.d/k8s-api.conf
 
+sudo nano /etc/nginx/stream.d/k8s-api.conf
+```
 add the following lines in the above file
 ```bash
 upstream k8s_api {
