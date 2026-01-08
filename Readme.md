@@ -106,7 +106,7 @@ sysctl net.bridge.bridge-nf-call-iptables
 sysctl net.ipv4.ip_forward
 
 ```
-# install docker on all the 6 machines , not on bastian host
+# install docker on all the  machines except lb-01 and bastian host
 ```bash
 sudo su
 sudo apt update
@@ -129,7 +129,7 @@ sudo usermod -aG docker ubuntu
 docker version
 docker ps
 ```
-
+# you can use the script install --> intall-docker.sh to install it on all machines (just update it with correct ip)
 
 # NGINX TCP Load Balancer for Kubernetes API (HA)
 
