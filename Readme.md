@@ -159,6 +159,15 @@ verify -->
 sudo nginx -t
 
 
+========================================
+```bash
+9345 → cluster bootstrap, trust, remotedialer (mandatory for join)
+6443 → Kubernetes API (used by kubectl, apps, users)
+Load balancer must expose both, but:
+Nodes join via 9345
+Humans/tools use 6443
+```
+
 
 
 
