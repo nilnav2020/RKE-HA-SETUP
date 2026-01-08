@@ -19,7 +19,7 @@
         └────────────────────────────────┘
 
 ```
-# provisio 7 servers -- 1 bastian , 6 machine for RKE
+# provision 7 servers -- 1 bastian , 6 machine for RKE
 
 ```bash
 | Private IP | Hostname | Role                   |
