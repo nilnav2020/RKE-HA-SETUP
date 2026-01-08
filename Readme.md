@@ -43,6 +43,8 @@ sudo nano /etc/hosts
 10.0.0.179  wk-02
 
 # — Edit SSH config on bastion
+nano ~/.ssh/config
+# make the following entry
 Host 10.0.0.* cp-* wk-* lb-*
   User ubuntu
   IdentityFile ~/.ssh/RKE.pem
