@@ -152,7 +152,9 @@ ls -l /etc/nginx/modules-enabled/ | grep stream
 ```bash
 sudo mkdir -p /etc/nginx/stream.d
 ```
-add the following lines
+sudo nano /etc/nginx/stream.d/k8s-api.conf
+
+add the following lines in the above file
 ```bash
 upstream k8s_api {
     least_conn;
