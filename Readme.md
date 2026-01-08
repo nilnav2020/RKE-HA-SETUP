@@ -69,12 +69,8 @@ Host 10.0.0.* cp-* wk-* lb-*
 ```
 
 # PHASE 2 — OS PREPARATION
-# we complete the mandatory kernel and networking preparation required for Kubernetes.
-
-
-
-# Load Kernel Modules Required by Kubernetes
-
+we will now complete the mandatory kernel and networking preparation required for Kubernetes.
+Swap should disabled on all machines
 # These modules are required for:
 
 1.Container networking
