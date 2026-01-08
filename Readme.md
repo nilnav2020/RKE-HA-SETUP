@@ -35,8 +35,8 @@
 confirgure ssh -- passswordless to other 6 nodes and also update hostname on all the 6 servers and then uodate the host entry on bastian host
 ```bash
 sudo nano /etc/hosts
-10.0.0.47   lb-01
-10.0.0.55   cp-01
+10.0.0.47   cp-01
+10.0.0.55   lb-01
 10.0.0.251  cp-02
 10.0.0.109  cp-03
 10.0.0.63   wk-01
