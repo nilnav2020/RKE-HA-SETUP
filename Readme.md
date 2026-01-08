@@ -31,14 +31,14 @@
 ```
 
 
-#PHASE 2 — OS PREPARATION
-#we complete the mandatory kernel and networking preparation required for Kubernetes.
+# PHASE 2 — OS PREPARATION
+# we complete the mandatory kernel and networking preparation required for Kubernetes.
 
 
 
-Load Kernel Modules Required by Kubernetes
+# Load Kernel Modules Required by Kubernetes
 
-These modules are required for:
+# These modules are required for:
 
 1.Container networking
 
@@ -46,9 +46,9 @@ These modules are required for:
 
 3.CNI plugins (Calico/Canal)
 
-#n ALL 6 cluster nodes
+# on ALL 6 cluster nodes
 
-#Load modules immediately
+# Load modules immediately
 ```bash
 sudo modprobe overlay
 sudo modprobe br_netfilter
@@ -57,10 +57,11 @@ sudo tee /etc/modules-load.d/k8s.conf <<EOF
 overlay
 br_netfilter
 EOF
-#verify
+# verify
 lsmod | grep -E 'overlay|br_netfilter'
 #Apply sysctl Settings for Kubernetes Networking
-#1.sudo tee /etc/sysctl.d/99-kubernetes-cri.conf <<EOF
+# 1. Create sysctl config
+sudo tee /etc/sysctl.d/99-kubernetes-cri.conf <<EOF
 net.bridge.bridge-nf-call-iptables  = 1
 net.bridge.bridge-nf-call-ip6tables = 1
 net.ipv4.ip_forward                = 1
