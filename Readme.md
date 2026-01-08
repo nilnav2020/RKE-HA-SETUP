@@ -19,6 +19,19 @@
         └────────────────────────────────┘
 
 ```
+# provisio 7 servers -- 1 bastian , 6 machine for RKE
+
+```bash
+| Private IP | Hostname | Role                   |
+| ---------- | -------- | ---------------------- |
+| 10.0.0.47  | cp-01    | Control Plane + etcd   |
+| 10.0.0.251 | cp-02    | Control Plane + etcd   |
+| 10.0.0.109 | cp-03    | Control Plane + etcd   |
+| 10.0.0.55  | lb-01    | External Load Balancer |
+| 10.0.0.63  | wk-01    | Worker                 |
+| 10.0.0.179 | wk-02    | Worker                 |
+
+```
 
 ```bash
 | Port        | Protocol | Source      | Purpose       |
