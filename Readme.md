@@ -106,30 +106,6 @@ sysctl net.bridge.bridge-nf-call-iptables
 sysctl net.ipv4.ip_forward
 
 ```
-# install docker on all the  machines except lb-01 and bastian host
-```bash
-sudo su
-sudo apt update
-sudo apt install -y ca-certificates curl gnupg lsb-release
-#adding GPG key
-sudo mkdir -p /etc/apt/keyrings
-curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /etc/apt/keyrings/docker.gpg
-# adding official repo
-echo \
-  "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.gpg] \
-  https://download.docker.com/linux/ubuntu \
-  $(lsb_release -cs) stable" | \
-  sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
-# install docker
-sudo apt update
-sudo apt install -y docker-ce docker-ce-cli containerd.io
-# allow user access to docker
-sudo usermod -aG docker ubuntu
-# verify
-docker version
-docker ps
-```
-# you can use the script install --> intall-docker.sh to install it on all machines (just update it with correct ip)
 
 # NGINX TCP Load Balancer for Kubernetes API (HA)
 
