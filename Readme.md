@@ -132,19 +132,34 @@ sudo nano /etc/nginx/stream.d/k8s-api.conf
 ```
 add the following lines in the above file
 ```bash
-upstream k8s_api {
+upstream rke2_api {
     least_conn;
     server 10.0.0.47:6443;   # cp-01
     server 10.0.0.251:6443;  # cp-02
     server 10.0.0.109:6443;  # cp-03
 }
 
+upstream rke2_supervisor {
+    least_conn;
+    server 10.0.0.47:9345;   # cp-01
+    server 10.0.0.251:9345;  # cp-02
+    server 10.0.0.109:9345;  # cp-03
+}
+
 server {
     listen 6443;
-    proxy_pass k8s_api;
+    proxy_pass rke2_api;
     proxy_timeout 10m;
     proxy_connect_timeout 5s;
 }
+
+server {
+    listen 9345;
+    proxy_pass rke2_supervisor;
+    proxy_timeout 10m;
+    proxy_connect_timeout 5s;
+}
+
 ```
 # Register Stream Context in nginx.conf
 file --> sudo nano /etc/nginx/nginx.conf
