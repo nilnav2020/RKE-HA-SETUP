@@ -183,7 +183,7 @@ Nodes join via 9345
 Humans/tools use 6443
 ```
 
-
+# next phase --> control plane setup
 
 
 
