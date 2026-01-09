@@ -43,6 +43,7 @@
 | 10251–10252 | TCP      | Subnet CIDR | control plane |
 | 30000–32767 | TCP      | Subnet CIDR | NodePort      |
 | ALL         | ICMP     | Subnet CIDR | Debug         |
+| 9345        | TCP      | Subnet CIDR | RKE Supervisor|
 ```
 
 
